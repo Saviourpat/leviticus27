@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Levitical Values</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+  
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Logo Text (You can replace with an image if needed) -->
+        <h1 class="sitename">Levitical Values</h1>
+      </a>
+  
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#how-it-works-valuation-cta">How it works</a></li>
+          <li><a href="valuation.html">Valuation</a></li> <!-- Updated to link to valuation page -->
+          <li><a href="#newsletter-signupt">Subscribe</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+  
+    </div>
+  </header>
+
+  <main class="main">
+
+ <!-- Page Title -->
+<div class="page-title dark-background">
+  <div class="container position-relative">
+    <h1>Levitical Valuation</h1>
+    <p>Enter your age and gender to calculate your Levitical valuation in shekels based on Leviticus 27.</p>
+    <nav class="breadcrumbs">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li class="current">Levitical Valuation</li>
+      </ol>
+    </nav>
+  </div>
+</div><!-- End Page Title -->
+
+<!-- Valuation Section -->
+<section id="valuation" class="valuation section py-5 bg-light">
+  <div class="container">
+
+    <!-- Valuation Form -->
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <h2>Calculate Your Levitical Valuation</h2>
+
+        <form id="valuation-form" onsubmit="return calculateValuation(event)">
+          <!-- Age Input -->
+          <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" class="form-control" placeholder="Enter your age" required>
+          </div>
+
+          <!-- Gender Selector -->
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" class="form-control" required>
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <br>
+
+          <!-- Submit Button -->
+          <div class="form-group text-center">
+            <button type="submit" class="btn-submit">Calculate Valuation</button>
+          </div>
+        </form>
+
+        <!-- Result Alert -->
+        <div id="result" class="alert alert-info mt-3" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+</section><!-- /Valuation Section -->
+
+<!-- JavaScript for Calculation -->
+<script>
+  function calculateValuation(event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get age and gender values from the form
+    const age = parseInt(document.getElementById('age').value);
+    const gender = document.getElementById('gender').value;
+
+    let valuation = 0;
+    let message = '';
+
+    // Validation for gender and age range with the corresponding values from Leviticus 27
+    if (gender === 'female') {
+      if (age >= 20 && age <= 60) {
+        valuation = 30;
+        message = 'You are valued at 30 shekels of silver based on your age and gender.';
+      } else if (age >= 5 && age < 20) {
+        valuation = 10;
+        message = 'You are valued at 10 shekels of silver based on your age and gender.';
+      } else if (age >= 1 && age < 5) {
+        valuation = 3;
+        message = 'You are valued at 3 shekels of silver based on your age and gender.';
+      } else if (age >= 60) {
+        valuation = 10;
+        message = 'You are valued at 10 shekels of silver based on your age and gender.';
+      } else {
+        message = 'Age does not fall within the valid range for valuation.';
+      }
+    } else if (gender === 'male') {
+      if (age >= 20 && age <= 60) {
+        valuation = 50;
+        message = 'You are valued at 50 shekels of silver based on your age and gender.';
+      } else if (age >= 5 && age < 20) {
+        valuation = 20;
+        message = 'You are valued at 20 shekels of silver based on your age and gender.';
+      } else if (age >= 1 && age < 5) {
+        valuation = 5;
+        message = 'You are valued at 5 shekels of silver based on your age and gender.';
+      } else if (age >= 60) {
+        valuation = 15;
+        message = 'You are valued at 15 shekels of silver based on your age and gender.';
+      } else {
+        message = 'Age does not fall within the valid range for valuation.';
+      }
+    }
+
+    // Display the result
+    const resultElement = document.getElementById('result');
+    if (valuation > 0) {
+      resultElement.textContent = message;
+      resultElement.className = 'alert alert-success mt-3'; // Success alert
+    } else {
+      resultElement.textContent = message;
+      resultElement.className = 'alert alert-danger mt-3'; // Error alert
+    }
+
+    resultElement.style.display = 'block'; // Show result alert
+  }
+</script>
+
+
+  </main>
+  <footer id="footer" class="footer light-background">
+    <div class="container">
+      <h3 class="sitename">Levitical Valuation</h3>
+      <p>Explore the sacred values from Leviticus 27. Understand the value of individuals as described in biblical tradition.</p>
+          <span>Copyright</span> <strong class="px-1 sitename">Levitical Valuation</strong> <span>All Rights Reserved</span>
+    </div>
+  </footer>
+  
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+  <!-- Preloader -->
+  <div id="preloader"></div>
+  
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  
+  </body>
+  </html>
+  
